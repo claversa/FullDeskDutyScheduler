@@ -15,6 +15,7 @@ const Dashboard = () => {
                 throw new Error('Network response was not ok');
             }
             const result = await response.json();
+            handlesetError(false);
             setData(result);
         } catch (error) {
             console.error('Error fetching data:', error);
