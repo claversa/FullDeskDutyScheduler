@@ -7,7 +7,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+// CORS Configuration
+app.use(cors({
+    origin: ['https://full-desk-duty-scheduler.vercel.app/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Allow cookies or authorization headers if needed
+}));
 
 // MongoDB connection
 const mongoURI = process.env.MONGO_URI;
