@@ -7,9 +7,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-// app.use(cors({ origin: 'http://localhost:3000' }));  // If React is running on port 3000
-
+// CORS Configuration
+app.use(cors({
+    origin: ['https://ra-scheduler.vercel.app/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Allow cookies or authorization headers if needed
+}));
 
 // Get the MongoDB URI from the .env file
 const mongoURI = process.env.MONGO_URI;
